@@ -41,7 +41,7 @@
                 <td>{{contact.PhoneNumber}}</td>
                 <td>{{contact.Status}}</td>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalEdit">Edit</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalEdit" ng-click="selectContact(contact)">Edit</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalDelete">Delete</button>
@@ -66,35 +66,35 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">First Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" ng-model="newUser.FirstName">
+                                    <input type="text" class="form-control" ng-model="newContact.FirstName">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" ng-model="newUser.LastName">
+                                    <input type="text" class="form-control" ng-model="newContact.LastName">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" ng-model="newUser.Email">
+                                    <input type="email" class="form-control" ng-model="newContact.Email">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Phone Number</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" ng-model="newUser.PhoneNumber">
+                                    <input type="tel" class="form-control" ng-model="newContact.PhoneNumber">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Status</label>
                                 <div class="col-sm-9">
-                                <select class="form-control" ng-model="newUser.Status">
+                                <select class="form-control" ng-model="newContact.Status">
                                     <option>Active</option>
                                     <option>Inactive</option>
                                 </select>
@@ -103,7 +103,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="submit" class="btn btn-default" ng-click="saveUser()">Save</button>
+                                    <button type="submit" class="btn btn-default" ng-click="saveUser()" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -131,35 +131,35 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">First Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" ng-model="clickedContact.FirstName">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" ng-model="clickedContact.LastName">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control">
+                                    <input type="email" class="form-control" ng-model="clickedContact.Email">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Phone Number</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control">
+                                    <input type="tel" class="form-control" ng-model="clickedContact.PhoneNumber">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Status</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" ng-model="clickedContact.Status">
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
@@ -167,8 +167,8 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="submit" class="btn btn-default">Save</button>
+                                <div class="col-sm-offset-3 col-sm-9" >
+                                    <button type="submit" class="btn btn-default" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </form>
