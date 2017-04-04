@@ -19,5 +19,13 @@ myApp.controller("myController", function($scope) {
     $scope.selectContact = function(contact) {
         console.log(contact);
         $scope.clickedContact = contact;
-    }
+    };
+
+    $scope.updateContact = function(contact) {
+
+    };
+
+    $scope.deleteContact = function(contact) {
+        $scope.contacts.splice($scope.contacts.indexOf($scope.clickedContact), 1);
+    };
 });
