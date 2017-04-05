@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Evolent Test</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- AngularJS core module -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <!-- Javascript file -->
     <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="myController">
@@ -20,9 +22,9 @@
         <span class="clearfix"></span>
         <hr>
 
-        <div class="alert alert-info">
-            Indicates a neutral informative change or action.
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <div class="alert alert-info" ng-if="message">
+            <a href="#" class="close" aria-label="close" ng-click="clearMessage()">&times;</a>
+            {{message}}
         </div>
 
         <table class="table table-striped">
@@ -67,39 +69,39 @@
                         <h4 class="modal-title">New Contact Form</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" name="contactForm" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-3">First Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" ng-model="newContact.FirstName">
+                                    <input type="text" class="form-control" placeholder="John" ng-model="newContact.FirstName" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" ng-model="newContact.LastName">
+                                    <input type="text" class="form-control" placeholder="Doe" ng-model="newContact.LastName" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" ng-model="newContact.Email">
+                                    <input type="email" class="form-control" placeholder="abc@abc.com" ng-model="newContact.Email" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Phone Number</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" ng-model="newContact.PhoneNumber">
+                                    <input type="tel" class="form-control" placeholder="(999)-999-9999" pattern="^[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$" ng-model="newContact.PhoneNumber" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Status</label>
                                 <div class="col-sm-9">
-                                <select class="form-control" ng-model="newContact.Status">
+                                <select class="form-control" ng-model="newContact.Status" ng-required="true">
                                     <option>Active</option>
                                     <option>Inactive</option>
                                 </select>
@@ -108,7 +110,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="submit" class="btn btn-default" ng-click="saveUser()" data-dismiss="modal">Save</button>
+                                    <button type="submit" class="btn btn-default" ng-disabled="contactForm.$invalid" ng-click="saveUser()" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -132,39 +134,39 @@
                         <h4 class="modal-title">Edit This Contact</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" name="editForm" role="form">
                             <div class="form-group">
                                 <label class="control-label col-sm-3">First Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" ng-model="clickedContact.FirstName">
+                                    <input type="text" class="form-control" ng-model="clickedContact.FirstName" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" ng-model="clickedContact.LastName">
+                                    <input type="text" class="form-control" ng-model="clickedContact.LastName" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" ng-model="clickedContact.Email">
+                                    <input type="email" class="form-control" ng-model="clickedContact.Email" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Phone Number</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" ng-model="clickedContact.PhoneNumber">
+                                    <input type="tel" class="form-control" pattern="^[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$" ng-model="clickedContact.PhoneNumber" ng-required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Status</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" ng-model="clickedContact.Status">
+                                    <select class="form-control" ng-model="clickedContact.Status" ng-required="true">
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
@@ -173,7 +175,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9" >
-                                    <button type="submit" class="btn btn-default" ng-click="updateUser()" data-dismiss="modal">Save</button>
+                                    <button type="submit" class="btn btn-default" ng-disabled="editForm.$invalid" ng-click="updateContact()" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </form>

@@ -1,19 +1,18 @@
 var myApp = angular.module("myApp", []);
 
 myApp.controller("myController", function($scope) {
-    console.log("In Controller...");
     $scope.newContact = {};
     $scope.clickedContact = {};
+    $scope.message = "";
 
     $scope.contacts = [
-        {FirstName: "Ramesh", LastName: "Kumar", Email: "abc@gmail.com", PhoneNumber: "9999999999", Status: "Active"},
-        {FirstName: "Ramesh", LastName: "Kumar", Email: "abc@gmail.com", PhoneNumber: "9999999999", Status: "Active"},
-        {FirstName: "Ramesh", LastName: "Kumar", Email: "abc@gmail.com", PhoneNumber: "9999999999", Status: "Active"}
+        {FirstName: "John", LastName: "Doe", Email: "abc@gmail.com", PhoneNumber: "9999999999", Status: "Active"}
     ];
 
     $scope.saveUser = function() {
         $scope.contacts.push($scope.newContact);
         $scope.newContact = {};
+        $scope.message = "New Contact added successfully!";
     };
 
     $scope.selectContact = function(contact) {
@@ -22,10 +21,15 @@ myApp.controller("myController", function($scope) {
     };
 
     $scope.updateContact = function(contact) {
-
+        $scope.message = "Contact updated successfully!";
     };
 
     $scope.deleteContact = function(contact) {
         $scope.contacts.splice($scope.contacts.indexOf($scope.clickedContact), 1);
+        $scope.message = "Contact deleted successfully!";
     };
+
+    $scope.clearMessage = function() {
+        $scope.message = "";
+    }
 });
